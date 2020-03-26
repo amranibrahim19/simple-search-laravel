@@ -1,0 +1,19 @@
+runtime: php72
+
+runtime_config:
+  document_root: public
+
+env_variables:
+  LOG_CHANNEL: stackdriver
+  ## Put production environment variables here.
+  APP_KEY: base64:y+TMpjj9pteNj/hlplOZ73Vu6IEBGv7vMvKBZMzziZ8=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_HOST: database-1.cmrigkuiwsue.ap-southeast-1.rds.amazonaws.com
+  DB_DATABASE: semakan
+  DB_USERNAME: admin
+  DB_PASSWORD: password
+  DB_SOCKET: "/cloudsql/prolifymy:asia-southeast1:prolifymy"
