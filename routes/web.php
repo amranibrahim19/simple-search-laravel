@@ -1,6 +1,9 @@
 <?php
 use App\Semakan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +16,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get ( '/', function () {
-    return view ( 'welcome' );
-} );
-Route::any ( '/search', function () {
-    $q = Input::get ( 'q' );
-    $semakan = Semakan::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->get ();
-    if (count ( $semakan) > 0)
-        return view ( 'welcome' )->withDetails ( $semakan )->withQuery ( $q );
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::any('/search', function () {
+    $q = Input::get('q');
+    $semakan = Semakan::where('name', 'LIKE', '%' . $q . '%')->orWhere('email', 'LIKE', '%' . $q . '%')->get();
+    if (count($semakan) > 0)
+        return view('welcome')->withDetails($semakan)->withQuery($q);
     else
-        return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
-} );
+        return view('welcome')->withMessage('No Details found. Try to search again !');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
