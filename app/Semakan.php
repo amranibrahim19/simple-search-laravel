@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Semakan extends Model
 {
     protected $fillable = [
-        'name', 'ic_no', 'status'
+        'name', 'email', 'status'
     ];
 }

@@ -18,7 +18,7 @@ Route::get ( '/', function () {
 } );
 Route::any ( '/search', function () {
     $q = Input::get ( 'q' );
-    $semakan = Semakan::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'ic_no', 'LIKE', '%' . $q . '%' )->get ();
+    $semakan = Semakan::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->get ();
     if (count ( $semakan) > 0)
         return view ( 'welcome' )->withDetails ( $semakan )->withQuery ( $q );
     else
