@@ -1,5 +1,7 @@
 <?php
-use App\Semakan;
+
+use App\Http\Controllers\SearchController;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -16,17 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::any('/search', function () {
-    $q = Input::get('q');
-    $semakan = Semakan::where('name', 'LIKE', '%' . $q . '%')->orWhere('email', 'LIKE', '%' . $q . '%')->get();
-    if (count($semakan) > 0)
-        return view('welcome')->withDetails($semakan)->withQuery($q);
-    else
-        return view('welcome')->withMessage('No Details found. Try to search again !');
-});
+Route::get('/', [SearchController::class, 'index'])->name('index');
+Route::any('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/result', [SearchController::class, 'result'])->name('result');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
