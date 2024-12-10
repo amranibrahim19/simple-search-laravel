@@ -9,11 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "fideloper/proxy": "*",
         "illuminate/support": "*",
-        "laravel/framework": "^9.0",
-        "laravel/tinker": "*",
-        "laravel/ui": "^4.2"
+        "laravel/framework": "^11.3.3",
+        "laravel/tinker": "^2.10",
+        "laravel/ui": "^4.6"
     },
     "config": {
         "optimize-autoloader": true,
