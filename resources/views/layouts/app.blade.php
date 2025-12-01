@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @vite(['resources/css/main.css', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">

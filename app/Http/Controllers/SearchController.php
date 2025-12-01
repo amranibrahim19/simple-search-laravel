@@ -11,10 +11,11 @@ class SearchController extends Controller
     public function index()
     {
 
-        $data = User::all();
+        $data = User::paginate(10);
+
 
         return view('welcome', [
-            'data' => $data
+            'users' => $data
         ]);
     }
 
@@ -25,9 +26,9 @@ class SearchController extends Controller
 
         $q = $request->input('search_input');
         $semakan = User::where('name', 'LIKE', '%' . $q . '%')
-        ->orWhere('email', 'LIKE', '%' . $q . '%')
-        ->orWhere('status', 'LIKE', '%' . $q . '%')
-        ->get();
+            ->orWhere('email', 'LIKE', '%' . $q . '%')
+            ->orWhere('status', 'LIKE', '%' . $q . '%')
+            ->get();
 
         if (count($semakan) > 0) {
             // return view('welcome')->withDetails($semakan)->withQuery($q);
